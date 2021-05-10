@@ -1,6 +1,6 @@
 .header {
     padding: 24px 0;
-    border-bottom: 1px solid #DEE4E9;
+    border-bottom: 1px solid var(--gray100);
 }
 
 .title {

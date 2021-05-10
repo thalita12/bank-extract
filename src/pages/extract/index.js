@@ -1,12 +1,18 @@
 import React from 'react';
+import { Container } from '@material-ui/core';
 import Header from '../../common/components/header';
 import Filter from '../../common/components/filter';
+import Panel from '../../common/components/panel';
 
 const Extract = () => (
   <>
     <Header />
 
-    <Filter />
+    <Container>
+      <Filter />
+
+      <Panel />
+    </Container>
   </>
 );
 
