@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-const ButtonList = ({ values, onClickButton }) => {
+const ButtonList = ({ values = [], onClickButton }) => {
   const handleClickButton = ({ value }) => {
     onClickButton({ value });
   };
@@ -21,5 +21,7 @@ const ButtonList = ({ values, onClickButton }) => {
     </>
   );
 };
+
+ButtonList.propTypes = {};
 
 export default ButtonList;

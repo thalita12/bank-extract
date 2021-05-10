@@ -5,7 +5,7 @@ import ButtonList from '../button-list';
 import BUTTON_FILTERS from '../../constants/button-filters';
 
 const Filter = () => {
-  const [values, setValues] = useState(BUTTON_FILTERS);
+  const [values] = useState(BUTTON_FILTERS);
   const handleClickFilter = ({ value }) => {
     console.log(value);
   };
