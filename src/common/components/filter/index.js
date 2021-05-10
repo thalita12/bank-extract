@@ -1,39 +1,34 @@
-import React from 'react';
-import { Button, Container, FormControl, Input, InputAdornment } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Container, FormControl, Input, InputAdornment } from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
+import ButtonList from '../button-list';
+import BUTTON_FILTERS from '../../constants/button-filters';
 
 const Filter = () => {
-    return (
-        <Container>
-            <Button variant="contained" color="secondary">
-                Tudo
-            </Button>
+  const [values, setValues] = useState(BUTTON_FILTERS);
+  const handleClickFilter = ({ value }) => {
+    console.log(value);
+  };
 
-            <Button color="secondary">
-                Entrada
-            </Button>
+  useEffect(() => {}, []);
 
-            <Button color="secondary">
-                Saída
-            </Button>
+  return (
+    <Container>
+      <ButtonList values={values} onClickButton={handleClickFilter} />
 
-            <Button color="secondary">
-                Futuro
-            </Button>
-
-            <FormControl>
-                <Input
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start">
-                            <Search />
-                        </InputAdornment>
-                    }
-                    placeholder="Pesquisa"
-                />
-            </FormControl>
-        </Container>
-    )
+      <FormControl>
+        <Input
+          id="input-with-icon-adornment"
+          startAdornment={
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          }
+          placeholder="Pesquisa"
+        />
+      </FormControl>
+    </Container>
+  );
 };
 
 export default Filter;

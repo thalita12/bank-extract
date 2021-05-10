@@ -1,10 +1,8 @@
-import React from "react";
+import React from 'react';
 import Extract from './pages/extract';
 
 const App = () => {
-  return (
-    <Extract />
-  );
+  return <Extract />;
 };
 
 export default App;
