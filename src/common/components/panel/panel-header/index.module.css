@@ -1,0 +1,16 @@
+.panelHead {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.panelHead p {
+    margin: 0;
+    color: #6B7076;
+}
+
+.panelHead p:last-child {
+    text-align: right;
+}

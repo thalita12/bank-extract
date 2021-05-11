@@ -1,0 +1,31 @@
+.panelBody {
+    border: 1px solid var(--gray200);
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+
+
+.panelRow {
+    display: flex;
+    align-items: center;
+    padding: 32px 16px 0;
+}
+
+.panelRow:last-child {
+    padding-bottom: 32px;
+}
+
+.panelRow p {
+    margin: 0;
+    color: #6B7076;
+}
+
+.panelRow p:last-child {
+    text-align: right;
+}
+
+.panelPrimaryText {
+    color: var(--secondary-color) !important;
+}
