@@ -1,7 +1,7 @@
 {
   "results": [
     {
-      "date": "2021-01-06T00:00:00Z",
+      "date": "2021-01-06T21:00:00Z",
       "amountTotal": 128000,
       "items": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "date": "2021-01-17T00:00:00Z",
+      "date": "2021-01-17T21:00:00Z",
       "amountTotal": 94080,
       "items": [
         {
@@ -44,7 +44,7 @@
           "type": "INTERNAL",
           "entry": "DEBIT",
           "scheduled": false,
-          "dateEvent": "2021-01-17T00:00:00Z"
+          "dateEvent": "2021-01-17T21:00:00Z"
         },
         {
           "status": "COMPLETED",
@@ -54,7 +54,7 @@
           "type": "INTERNAL",
           "entry": "DEBIT",
           "scheduled": false,
-          "dateEvent": "2020-01-17T00:00:00Z"
+          "dateEvent": "2020-01-17T21:00:00Z"
         },
         {
           "status": "REFUNDED",
@@ -64,7 +64,7 @@
           "type": "INTERNAL",
           "entry": "CREDIT",
           "scheduled": false,
-          "dateEvent": "2020-01-17T00:00:00Z"
+          "dateEvent": "2020-01-17T21:00:00Z"
         },
         {
           "status": "COMPLETED",
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "date": "2020-04-20T00:00:00Z",
+      "date": "2020-04-20T21:00:00Z",
       "amountTotal": 83080,
       "items": [
         {
@@ -90,7 +90,7 @@
           "type": "EXTERNAL",
           "entry": "DEBIT",
           "scheduled": false,
-          "dateEvent": "2020-04-20T00:00:00Z"
+          "dateEvent": "2020-04-20T21:00:00Z"
         },
         {
           "status": "COMPLETED",
