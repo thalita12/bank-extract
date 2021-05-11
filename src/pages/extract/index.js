@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from '@material-ui/core';
+
+import { fetchResults } from '../../api/results';
+
 import Header from '../../common/components/header';
 import Filter from '../../common/components/filter';
 import Panel from '../../common/components/panel';
@@ -8,19 +11,22 @@ const Extract = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getResults = () => {
-    setLoading(true);
-    setTimeout(() => {
-      fetch('http://localhost:3002/results')
-        .then((response) => response.json())
-        .then((transactions) => setResults(transactions))
-        .catch(() => console.log('erro'))
-        .finally(() => setLoading(false));
-    }, 2000);
+  const getResults = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchResults();
+      setResults(data);
+    } catch {
+      console.log('Erro!');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    getResults();
+    (async () => {
+      await getResults();
+    })();
   }, []);
 
   return (
