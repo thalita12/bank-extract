@@ -7,7 +7,7 @@ import PanelFooter from './panel-footer';
 import styles from './index.module.css';
 
 const Panel = ({ results }) => (
-  <>
+  <div className={styles.area}>
     {results.map((result) => (
       <div key={result.date}>
         <PanelHeader date={result.date} />
@@ -21,7 +21,7 @@ const Panel = ({ results }) => (
         <PanelFooter amountTotal={result.amountTotal} />
       </div>
     ))}
-  </>
+  </div>
 );
 
 export default Panel;

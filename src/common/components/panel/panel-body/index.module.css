@@ -5,8 +5,6 @@
     line-height: 24px;
 }
 
-
-
 .panelRow {
     display: flex;
     align-items: center;
@@ -27,5 +25,47 @@
 }
 
 .panelPrimaryText {
+    display: flex;
+    align-items: center;
+}
+
+.panelPrimaryText,
+.panelRefundedText {
     color: var(--secondary-color) !important;
+}
+
+.panelRefundedText {
+    text-decoration: line-through;
+}
+
+.panelCreditText {
+    color: var(--primary-color) !important;
+}
+
+.panelCreditText::before {
+    content: '- ';
+}
+
+.panelDebitText {
+   color: #1A93DA !important;
+}
+
+.panelDebitText::before {
+    content: '+ ';
+}
+
+.panelCreditText,
+.panelDebitText {
+    font-weight: 600;
+}
+
+.panelIcon {
+    width: 32px;
+    height: 32px;
+    background-color: #EAF7FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
 }

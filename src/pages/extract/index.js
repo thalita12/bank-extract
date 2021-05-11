@@ -6,12 +6,17 @@ import Panel from '../../common/components/panel';
 
 const Extract = () => {
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getResults = () => {
-    fetch('http://localhost:3002/results')
-      .then((response) => response.json())
-      .then((transactions) => setResults(transactions))
-      .catch(console.log('erro'));
+    setLoading(true);
+    setTimeout(() => {
+      fetch('http://localhost:3002/results')
+        .then((response) => response.json())
+        .then((transactions) => setResults(transactions))
+        .catch(() => console.log('erro'))
+        .finally(() => setLoading(false));
+    }, 2000);
   };
 
   useEffect(() => {
@@ -25,7 +30,7 @@ const Extract = () => {
       <Container>
         <Filter />
 
-        <Panel results={results} />
+        {!loading ? <Panel results={results} /> : <div>Carregando....</div>}
       </Container>
     </>
   );
