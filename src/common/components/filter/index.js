@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import Search from '@material-ui/icons/Search';
+import React, { useState } from 'react';
+
 import ButtonList from '../button-list';
-import BUTTON_FILTERS from '../../constants/button-filters';
+import SearchInput from '../search-input';
+
 import styles from './index.module.css';
 
-const Filter = () => {
-  const [values] = useState(BUTTON_FILTERS);
-  const handleClickFilter = ({ value }) => {
-    console.log(value);
-  };
+const Filter = ({ onUpdateActiveFilter }) => {
+  const [activeFilter, setActiveFilter] = useState('ALL');
 
-  useEffect(() => {}, []);
+  const handleClickFilter = ({ value }) => {
+    setActiveFilter(value);
+    onUpdateActiveFilter(value);
+  };
 
   return (
     <div className={styles.area}>
-      <ButtonList values={values} onClickButton={handleClickFilter} />
+      <ButtonList activeFilter={activeFilter} onClickButton={handleClickFilter} />
 
-      <div className={styles.search}>
-        <button className={styles.searchBtn} type="submit">
-          <Search />
-        </button>
-
-        <input className={styles.searchInput} type="text" placeholder="Pesquisa" />
-      </div>
+      <SearchInput />
     </div>
   );
 };

@@ -2,22 +2,22 @@ const BUTTON_FILTERS = [
   {
     key: 'all',
     label: 'Tudo',
-    value: 'all',
+    value: 'ALL',
   },
   {
     key: 'entry',
     label: 'Entrada',
-    value: 'entry',
+    value: 'ENTRY',
   },
   {
     key: 'exit',
     label: 'Saída',
-    value: 'exit',
+    value: 'EXIT',
   },
   {
     key: 'future',
     label: 'Futuro',
-    value: 'future',
+    value: 'FUTURE',
   },
 ];
 

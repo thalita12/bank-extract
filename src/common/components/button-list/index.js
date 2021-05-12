@@ -1,18 +1,19 @@
 import React from 'react';
+import BUTTON_FILTERS from '../../constants/button-filters';
 import styles from './index.module.css';
 
-const ButtonList = ({ values = [], onClickButton }) => {
+const ButtonList = ({ activeFilter, onClickButton }) => {
   const handleClickButton = ({ value }) => {
     onClickButton({ value });
   };
 
   return (
     <>
-      {values.map((props) => (
+      {BUTTON_FILTERS.map((props) => (
         <button
           type="button"
           key={props.key}
-          className={`${styles.btn} ${props.active ? styles.active : ''}`}
+          className={`${styles.btn} ${props.value === activeFilter ? styles.active : ''}`}
           onClick={() => handleClickButton(props)}
         >
           {props.label}

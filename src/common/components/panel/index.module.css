@@ -8,3 +8,8 @@
     height: 8px;
     left: 24px;
 }
+
+.noResult {
+    text-align: center;
+    color: var(--primary-color);
+}

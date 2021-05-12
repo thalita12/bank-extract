@@ -8,19 +8,23 @@ import styles from './index.module.css';
 
 const Panel = ({ results }) => (
   <div className={styles.area}>
-    {results.map((result) => (
-      <div key={result.date}>
-        <PanelHeader date={result.date} />
+    {results.length ? (
+      results.map((result) => (
+        <div key={result.date}>
+          <PanelHeader date={result.date} />
 
-        <span className={styles.line} />
+          <span className={styles.line} />
 
-        <PanelBody items={result.items} />
+          <PanelBody items={result.items} />
 
-        <span className={styles.line} />
+          <span className={styles.line} />
 
-        <PanelFooter amountTotal={result.amountTotal} />
-      </div>
-    ))}
+          <PanelFooter amountTotal={result.amountTotal} />
+        </div>
+      ))
+    ) : (
+      <div className={styles.noResult}>Ops! Nenhum resultado encontrado :(</div>
+    )}
   </div>
 );
 
