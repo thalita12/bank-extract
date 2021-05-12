@@ -1,9 +1,12 @@
 :root {
   --primary-color: #fe3e6d;
   --secondary-color: #3b3b3b;
-
-  --gray100: #DEE4E9;
-  --gray200: #C7CBCF;
+  --gray100: #dee4e9;
+  --gray200: #c7cbcf;
+  --gray300: #6b7076;
+  --crystal: #eaf7ff;
+  --blueStone: #1a93da;
+  --radish: #d3345c;
 }
 
 body {

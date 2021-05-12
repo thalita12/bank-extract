@@ -17,7 +17,7 @@
 
 .panelRow p {
     margin: 0;
-    color: #6B7076;
+    color: var(--gray300);
 }
 
 .panelRow p:last-child {
@@ -47,7 +47,7 @@
 }
 
 .panelDebitText {
-   color: #1A93DA !important;
+   color: var(--blueStone) !important;
 }
 
 .panelDebitText::before {
@@ -62,7 +62,7 @@
 .panelIcon {
     width: 32px;
     height: 32px;
-    background-color: #EAF7FF;
+    background-color: var(--crystal);
     border-radius: 50%;
     display: flex;
     align-items: center;

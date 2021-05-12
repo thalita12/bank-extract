@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import styles from './index.module.css';
 
 const ButtonList = ({ values = [], onClickButton }) => {
   const handleClickButton = ({ value }) => {
@@ -12,7 +12,7 @@ const ButtonList = ({ values = [], onClickButton }) => {
         <button
           type="button"
           key={props.key}
-          className={`btn ${props.active ? 'active' : ''}`}
+          className={`${styles.btn} ${props.active ? styles.active : ''}`}
           onClick={() => handleClickButton(props)}
         >
           {props.label}

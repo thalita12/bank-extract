@@ -11,7 +11,7 @@
 }
 
 .btn:hover, .btn:active {
-    background-color: #eaf7ff;
+    background-color: var(--crystal);
     cursor: pointer;
 }
 
@@ -21,6 +21,6 @@
 }
 
 .active:hover, .active:active {
-    background-color: #bf002c;
+    background-color: var(--radish);
     cursor: pointer;
 }
