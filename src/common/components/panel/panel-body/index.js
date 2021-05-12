@@ -29,10 +29,10 @@ const PanelBody = ({ items }) => (
   <div className={styles.panelBody}>
     {items.map((item) => (
       <div key={`row-${item.dateEvent}-${item.amount}`} className={styles.panelRow}>
-        <p className={`w25 ${styles.panelPrimaryText}`}>
+        <div className={`w25 ${styles.panelField}`}>
           <div className={styles.panelIcon}>{getIcon(item)}</div>
-          {item.actor}
-        </p>
+          <p className={styles.panelPrimaryText}>{item.actor}</p>
+        </div>
         <p className="w25">{formatTransactionType(item)}</p>
         <p className="w25">{formatDateDMY(item.dateEvent)}</p>
         <p className={`w25 ${getClasses(item)}`}>{formatCurrency(item.amount)}</p>

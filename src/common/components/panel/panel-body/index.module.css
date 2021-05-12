@@ -24,7 +24,7 @@
     text-align: right;
 }
 
-.panelPrimaryText {
+.panelField {
     display: flex;
     align-items: center;
 }
