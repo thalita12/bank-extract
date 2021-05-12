@@ -31,7 +31,7 @@ const Extract = () => {
 
   return (
     <>
-      <Header />
+      <Header title="Extrato" />
 
       <Container>
         <Filter />
