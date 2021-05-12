@@ -6,6 +6,7 @@ import { fetchResults } from '../../api/results';
 import Header from '../../common/components/header';
 import Filter from '../../common/components/filter';
 import Panel from '../../common/components/panel';
+import Loading from '../../common/components/loading';
 
 const Extract = () => {
   const [results, setResults] = useState([]);
@@ -36,7 +37,7 @@ const Extract = () => {
       <Container>
         <Filter />
 
-        {!loading ? <Panel results={results} /> : <div>Carregando....</div>}
+        {!loading ? <Panel results={results} /> : <Loading />}
       </Container>
     </>
   );
