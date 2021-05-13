@@ -98,3 +98,9 @@
     left: 12%;
     margin: 0;
 }
+
+@media (max-width: 550px) {
+    .container {
+        top: 60%;
+    }
+}

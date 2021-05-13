@@ -1,7 +1,7 @@
 import { sortDates } from '../common/utils/format-date';
 import { filterByType } from '../common/utils/format-transaction-type';
 
-const FETCH_TIMEOUT = 2000;
+const FETCH_TIMEOUT = 1000;
 const RESULTS_API = 'http://localhost:3002/results';
 
 /**
