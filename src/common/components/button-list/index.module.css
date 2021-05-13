@@ -24,3 +24,12 @@
     background-color: var(--radish);
     cursor: pointer;
 }
+
+@media (max-width: 904px) {
+    .buttonList {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

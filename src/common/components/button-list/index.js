@@ -8,7 +8,7 @@ const ButtonList = ({ activeFilter, onClickButton }) => {
   };
 
   return (
-    <>
+    <div className={styles.buttonList}>
       {BUTTON_FILTERS.map((props) => (
         <button
           type="button"
@@ -19,7 +19,7 @@ const ButtonList = ({ activeFilter, onClickButton }) => {
           {props.label}
         </button>
       ))}
-    </>
+    </div>
   );
 };
 

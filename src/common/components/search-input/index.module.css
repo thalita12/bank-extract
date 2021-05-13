@@ -21,3 +21,24 @@
     line-height: 24px;
     outline: none;
 }
+
+@media (max-width: 904px) {
+    .search {
+        width: 80%;
+        margin: 32px auto 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .search {
+        width: 100%;
+    }
+
+    .searchBtn {
+        display: none;
+    }
+
+    .searchInput {
+        padding: 20px;
+    }
+}
