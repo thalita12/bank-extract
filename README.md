@@ -14,9 +14,10 @@ Projeto para realizar exibir o extrato bancário de uma conta.
 - Node.js [(download)](https://nodejs.org)
 
 ## Bibliotecas
-    - React
-    - Material-UI 
-    - JSON Server
+- React
+- JSON Server
+- Material-UI
+- Uso de CSS modules
     
 ## Arquitetura do Front-end
 Projeto desenvolvido utilizando o "react-create-app" para criar a estrutura inicial do `bank-extract`.

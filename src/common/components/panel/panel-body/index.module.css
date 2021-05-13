@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     padding: 32px 16px 0;
+    flex-wrap: wrap;
 }
 
 .panelRow:last-child {
@@ -27,6 +28,10 @@
 .panelField {
     display: flex;
     align-items: center;
+}
+
+.panelPrimaryText {
+    text-align: left !important;
 }
 
 .panelPrimaryText,
