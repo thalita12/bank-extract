@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatDateDMY } from '../../../utils/format-date';
+import { formatDateDMH } from '../../../utils/format-date';
 import { formatCurrency } from '../../../utils/format-currency';
 import formatTransactionType from '../../../utils/format-transaction-type';
 
@@ -34,7 +34,7 @@ const PanelBody = ({ items }) => (
           <p className={styles.panelPrimaryText}>{item.actor}</p>
         </div>
         <p className="w25">{formatTransactionType(item)}</p>
-        <p className="w25">{formatDateDMY(item.dateEvent)}</p>
+        <p className="w25">{formatDateDMH(item.dateEvent)}</p>
         <p className={`w25 ${getClasses(item)}`}>{formatCurrency(item.amount)}</p>
       </div>
     ))}
