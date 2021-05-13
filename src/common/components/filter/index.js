@@ -5,7 +5,7 @@ import SearchInput from '../search-input';
 
 import styles from './index.module.css';
 
-const Filter = ({ activeFilter, onUpdateActiveFilter }) => {
+const Filter = ({ activeFilter, onUpdateActiveFilter, onUpdateName }) => {
   const handleClickFilter = ({ value }) => {
     onUpdateActiveFilter(value);
   };
@@ -14,7 +14,7 @@ const Filter = ({ activeFilter, onUpdateActiveFilter }) => {
     <div className={styles.area}>
       <ButtonList activeFilter={activeFilter} onClickButton={handleClickFilter} />
 
-      <SearchInput />
+      <SearchInput onUpdateName={onUpdateName} />
     </div>
   );
 };

@@ -27,12 +27,12 @@ export const fetchResults = async () =>
  * @param {string} options.type tipo de filtro ativo
  * @returns {Promise<Object>}
  */
-export const fetchActiveResults = async ({ type }) =>
+export const fetchActiveResults = async ({ type, nameSearch }) =>
   new Promise((resolve, reject) => {
     (async () => {
       try {
         const results = await fetchResults();
-        const filteredResults = filterByType({ type, results });
+        const filteredResults = filterByType({ type, nameSearch, results });
         const updatedResults = sortDates({ results: filteredResults });
         resolve(updatedResults);
       } catch (error) {

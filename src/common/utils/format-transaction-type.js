@@ -7,6 +7,25 @@ import {
 import { sortDates } from './format-date';
 
 /**
+ * Filtra se tem o nome na transação.
+ * @param {Object} options valores para comparação
+ * @param {Object} options.values itens para buscar o nome
+ * @param {string} options.nameSearch nome a ser encontrado
+ * @returns {*[]|*}
+ */
+const filterByName = ({ values, nameSearch }) => {
+  const updatedByName = [];
+
+  values.forEach((value) => {
+    if (value.actor.toLowerCase().includes(nameSearch)) {
+      updatedByName.push(value);
+    }
+  });
+
+  return nameSearch.length ? updatedByName : values;
+};
+
+/**
  * Formata valores de transações para o tipo adequado dependendo do status.
  * @param {Object} options valores para comparação
  * @param {string} options.entry tipo de transação
@@ -57,21 +76,38 @@ export const formatTransactionType = ({ entry, scheduled, source, status }) => {
  * @param {Object} options.results lista de resultados
  * @returns {Object}
  */
-export const filterByType = ({ type, results }) => {
+export const filterByType = ({ type, nameSearch, results }) => {
   switch (type) {
     case 'ALL':
-      return results;
+      // eslint-disable-next-line no-case-declarations
+      const updateAlldResults = [];
+
+      results.forEach((result) => {
+        const filteredByName = filterByName({ values: result.items, nameSearch });
+
+        if (filteredByName.length > 0) {
+          const updatedItems = sortDates({ results: filteredByName });
+
+          updateAlldResults.push({
+            date: result.date,
+            amountTotal: result.amountTotal,
+            items: updatedItems,
+          });
+        }
+      });
+
+      return updateAlldResults;
 
     case 'ENTRY':
       // eslint-disable-next-line no-case-declarations
       const updatedEntryResults = [];
 
       results.forEach((result) => {
-        const filteredItems = result.items.filter((item) => item.entry === ENTRY_TYPE.DEBIT);
+        const filteredByEntry = result.items.filter((item) => item.entry === ENTRY_TYPE.DEBIT);
+        const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
 
-        if (filteredItems.length > 0) {
-          const updatedItems = sortDates({ results: filteredItems });
-
+        if (filteredByName.length > 0) {
+          const updatedItems = sortDates({ results: filteredByName });
           updatedEntryResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
@@ -87,10 +123,11 @@ export const filterByType = ({ type, results }) => {
       const updateExitdResults = [];
 
       results.forEach((result) => {
-        const filteredItems = result.items.filter((item) => item.entry === ENTRY_TYPE.CREDIT);
+        const filteredByEntry = result.items.filter((item) => item.entry === ENTRY_TYPE.CREDIT);
+        const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
 
-        if (filteredItems.length > 0) {
-          const updatedItems = sortDates({ results: filteredItems });
+        if (filteredByName.length > 0) {
+          const updatedItems = sortDates({ results: filteredByName });
 
           updateExitdResults.push({
             date: result.date,
@@ -99,6 +136,7 @@ export const filterByType = ({ type, results }) => {
           });
         }
       });
+
       return updateExitdResults;
 
     default:

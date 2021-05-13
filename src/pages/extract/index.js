@@ -10,6 +10,7 @@ import Loading from '../../common/components/loading';
 
 const Extract = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
+  const [nameSearch, setNameSearch] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -17,10 +18,14 @@ const Extract = () => {
     setActiveFilter(value);
   };
 
+  const handleUpdateNameSearch = async (value) => {
+    setNameSearch(value);
+  };
+
   const getResults = async () => {
     try {
       setLoading(true);
-      const data = await fetchActiveResults({ type: activeFilter });
+      const data = await fetchActiveResults({ type: activeFilter, nameSearch });
       setResults(data);
     } catch {
       console.error('Erro ao buscar os dados do extrato!');
@@ -33,14 +38,18 @@ const Extract = () => {
     (async () => {
       await getResults();
     })();
-  }, [activeFilter]);
+  }, [activeFilter, nameSearch]);
 
   return (
     <>
       <Header title="Extrato" />
 
       <Container>
-        <Filter activeFilter={activeFilter} onUpdateActiveFilter={handleUpdateActiveFilter} />
+        <Filter
+          activeFilter={activeFilter}
+          onUpdateActiveFilter={handleUpdateActiveFilter}
+          onUpdateName={handleUpdateNameSearch}
+        />
 
         {!loading ? <Panel results={results} /> : <Loading />}
       </Container>
