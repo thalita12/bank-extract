@@ -17,7 +17,7 @@ const BUTTON_FILTERS = [
   {
     key: 'future',
     label: 'Futuro',
-    value: 'FUTURE'
+    value: 'SCHEDULED'
   }
 ];
 

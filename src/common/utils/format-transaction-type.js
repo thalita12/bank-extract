@@ -145,9 +145,9 @@ export const filterByType = ({ type, nameSearch, results }) => {
 
       return updatedDebitResults;
 
-    case 'FUTURE':
+    case 'SCHEDULED':
       // eslint-disable-next-line no-case-declarations
-      const updatedFutureResults = [];
+      const updatedScheduledResults = [];
 
       results.forEach((result) => {
         const resultDate = new Date(result.date);
@@ -159,7 +159,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         if (filteredByName.length > 0) {
           const updatedItems = sortDates({ results: filteredByName });
 
-          updatedFutureResults.push({
+          updatedScheduledResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
             items: updatedItems
@@ -167,7 +167,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         }
       });
 
-      return updatedFutureResults;
+      return updatedScheduledResults;
 
     default:
       return [];
