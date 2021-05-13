@@ -9,7 +9,7 @@ const RESULTS_API = 'http://localhost:3002/results';
  * @param results
  * @returns {*[]|*}
  */
-const filterByStatus = ({ type, results }) => {
+const filterByType = ({ type, results }) => {
   switch (type) {
     case 'ALL':
       return results;
@@ -74,12 +74,12 @@ export const fetchResults = async () =>
  * @param value
  * @returns {Promise<unknown>}
  */
-export const fetchActiveFilter = async ({ value }) =>
+export const fetchActiveResults = async ({ type }) =>
   new Promise((resolve, reject) => {
     (async () => {
       try {
         const results = await fetchResults();
-        const updatedResults = filterByStatus({ type: value, results });
+        const updatedResults = filterByType({ type, results });
         resolve(updatedResults);
       } catch (error) {
         reject(error);

@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import ButtonList from '../button-list';
 import SearchInput from '../search-input';
 
 import styles from './index.module.css';
 
-const Filter = ({ onUpdateActiveFilter }) => {
-  const [activeFilter, setActiveFilter] = useState('ALL');
-
+const Filter = ({ activeFilter, onUpdateActiveFilter }) => {
   const handleClickFilter = ({ value }) => {
-    setActiveFilter(value);
     onUpdateActiveFilter(value);
   };
 
