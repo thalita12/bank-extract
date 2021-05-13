@@ -22,6 +22,7 @@ const SearchInput = ({ onUpdateName }) => {
         className={styles.searchInput}
         type="text"
         placeholder="Pesquisa"
+        maxLength="200"
         value={value}
         onChange={(event) => handleChangeValue(event)}
       />

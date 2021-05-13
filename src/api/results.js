@@ -33,7 +33,7 @@ export const fetchActiveResults = async ({ type, nameSearch }) =>
       try {
         const results = await fetchResults();
         const filteredResults = filterByType({ type, nameSearch, results });
-        const updatedResults = sortDates({ results: filteredResults });
+        const updatedResults = sortDates({ values: filteredResults });
         resolve(updatedResults);
       } catch (error) {
         reject(error);
