@@ -5,17 +5,32 @@
     "allowImportExportEverywhere": false,
     "codeFrame": false
   },
-  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier", "jest"],
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:jest/recommended",
+    "plugin:jest/style"],
   "env": {
     "browser": true,
     "jest": true
   },
   "rules": {
+    "standard/computed-property-even-spacing": 0,
     "max-len": ["error", {"code": 100}],
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": 0,
     "no-return-assign": ["off"],
     "import/prefer-default-export": ["off"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*-test.js","*.spec.js"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }

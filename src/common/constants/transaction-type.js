@@ -6,21 +6,21 @@ export const TRANSACTION_TYPE = {
   TRANSFER_CREDIT: 'Transferência recebida',
   TRANSFER_DEBIT: 'Transferência realizada',
   TRANSFER_REFUNDED: 'Transferência estornada',
-  TRANSFER_PENDING: 'Transferência agendada',
+  TRANSFER_PENDING: 'Transferência agendada'
 };
 
 export const SOURCE_TYPE = {
   PAYMENT: 'PAYMENT',
-  TRANSFER: 'TRANSFER',
+  TRANSFER: 'TRANSFER'
 };
 
 export const ENTRY_TYPE = {
   CREDIT: 'CREDIT',
-  DEBIT: 'DEBIT',
+  DEBIT: 'DEBIT'
 };
 
 export const STATUS_TYPE = {
   COMPLETED: 'COMPLETED',
   REFUNDED: 'REFUNDED',
-  PENDING: 'PENDING',
+  PENDING: 'PENDING'
 };

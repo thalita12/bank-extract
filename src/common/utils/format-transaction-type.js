@@ -2,7 +2,7 @@ import {
   ENTRY_TYPE,
   SOURCE_TYPE,
   STATUS_TYPE,
-  TRANSACTION_TYPE,
+  TRANSACTION_TYPE
 } from '../constants/transaction-type';
 import { sortDates } from './format-date';
 
@@ -31,7 +31,6 @@ const filterByName = ({ values, nameSearch }) => {
  * Formata valores de transações para o tipo adequado dependendo do status.
  * @param {Object} options valores para comparação
  * @param {string} options.entry tipo de transação
- * @param {boolean} options.scheduled se é transação agendada
  * @param {string} options.source tipo de operação
  * @param {string} options.status status da operação
  * @returns {string}
@@ -98,7 +97,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
           updatedAllResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
-            items: updatedItems,
+            items: updatedItems
           });
         }
       });
@@ -118,7 +117,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
           updatedCreditResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
-            items: updatedItems,
+            items: updatedItems
           });
         }
       });
@@ -139,7 +138,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
           updatedDebitResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
-            items: updatedItems,
+            items: updatedItems
           });
         }
       });
@@ -163,7 +162,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
           updatedFutureResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
-            items: updatedItems,
+            items: updatedItems
           });
         }
       });

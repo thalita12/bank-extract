@@ -2,23 +2,23 @@ const BUTTON_FILTERS = [
   {
     key: 'all',
     label: 'Tudo',
-    value: 'ALL',
+    value: 'ALL'
   },
   {
     key: 'entry',
     label: 'Entrada',
-    value: 'CREDIT',
+    value: 'CREDIT'
   },
   {
     key: 'exit',
     label: 'Saída',
-    value: 'DEBIT',
+    value: 'DEBIT'
   },
   {
     key: 'future',
     label: 'Futuro',
-    value: 'FUTURE',
-  },
+    value: 'FUTURE'
+  }
 ];
 
 export default BUTTON_FILTERS;
