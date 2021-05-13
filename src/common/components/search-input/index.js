@@ -12,12 +12,13 @@ const SearchInput = ({ onUpdateName }) => {
   };
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search} data-testid="search-input">
       <button className={styles.searchBtn} type="submit">
         <Search />
       </button>
 
       <input
+        data-testid="field-name"
         className={styles.searchInput}
         type="text"
         placeholder="Pesquisa"
