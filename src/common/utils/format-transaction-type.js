@@ -92,7 +92,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         const filteredByName = filterByName({ values: result.items, nameSearch });
 
         if (filteredByName.length > 0) {
-          const updatedItems = sortDates({ results: filteredByName });
+          const updatedItems = sortDates({ values: filteredByName });
 
           updatedAllResults.push({
             date: result.date,
@@ -113,7 +113,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
 
         if (filteredByName.length > 0) {
-          const updatedItems = sortDates({ results: filteredByName });
+          const updatedItems = sortDates({ values: filteredByName });
           updatedCreditResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
@@ -133,7 +133,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
 
         if (filteredByName.length > 0) {
-          const updatedItems = sortDates({ results: filteredByName });
+          const updatedItems = sortDates({ values: filteredByName });
 
           updatedDebitResults.push({
             date: result.date,
@@ -157,7 +157,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
 
         if (filteredByName.length > 0) {
-          const updatedItems = sortDates({ results: filteredByName });
+          const updatedItems = sortDates({ values: filteredByName });
 
           updatedScheduledResults.push({
             date: result.date,
