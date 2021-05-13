@@ -2,7 +2,7 @@ import React from 'react';
 
 import { formatDateDMH } from '../../../utils/format-date';
 import { formatCurrency } from '../../../utils/format-currency';
-import formatTransactionType from '../../../utils/format-transaction-type';
+import { formatTransactionType } from '../../../utils/format-transaction-type';
 
 import { ENTRY_TYPE, STATUS_TYPE } from '../../../constants/transaction-type';
 

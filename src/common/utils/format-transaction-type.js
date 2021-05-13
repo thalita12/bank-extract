@@ -4,13 +4,18 @@ import {
   STATUS_TYPE,
   TRANSACTION_TYPE,
 } from '../constants/transaction-type';
+import { sortDates } from './format-date';
 
 /**
  * Formata valores de transações para o tipo adequado dependendo do status.
- * @param {Object} date - Data para realizar a formatação
- * @returns {string} 'Pagamento realizado'
+ * @param {Object} options valores para comparação
+ * @param {string} options.entry tipo de transação
+ * @param {boolean} options.scheduled se é transação agendada
+ * @param {string} options.source tipo de operação
+ * @param {string} options.status status da operação
+ * @returns {string}
  */
-const formatTransactionType = ({ entry, scheduled, source, status }) => {
+export const formatTransactionType = ({ entry, scheduled, source, status }) => {
   switch (status) {
     case STATUS_TYPE.PENDING:
       return source === SOURCE_TYPE.PAYMENT
@@ -45,4 +50,58 @@ const formatTransactionType = ({ entry, scheduled, source, status }) => {
   }
 };
 
-export default formatTransactionType;
+/**
+ * Filtra os resultados de acordo com o tipo.
+ * @param {Object} options valores para comparação
+ * @param {string} options.type tipo de filtro ativo para a pesquisa
+ * @param {Object} options.results lista de resultados
+ * @returns {Object}
+ */
+export const filterByType = ({ type, results }) => {
+  switch (type) {
+    case 'ALL':
+      return results;
+
+    case 'ENTRY':
+      // eslint-disable-next-line no-case-declarations
+      const updatedEntryResults = [];
+
+      results.forEach((result) => {
+        const filteredItems = result.items.filter((item) => item.entry === ENTRY_TYPE.DEBIT);
+
+        if (filteredItems.length > 0) {
+          const updatedItems = sortDates({ results: filteredItems });
+
+          updatedEntryResults.push({
+            date: result.date,
+            amountTotal: result.amountTotal,
+            items: updatedItems,
+          });
+        }
+      });
+
+      return updatedEntryResults;
+
+    case 'EXIT':
+      // eslint-disable-next-line no-case-declarations
+      const updateExitdResults = [];
+
+      results.forEach((result) => {
+        const filteredItems = result.items.filter((item) => item.entry === ENTRY_TYPE.CREDIT);
+
+        if (filteredItems.length > 0) {
+          const updatedItems = sortDates({ results: filteredItems });
+
+          updateExitdResults.push({
+            date: result.date,
+            amountTotal: result.amountTotal,
+            items: updatedItems,
+          });
+        }
+      });
+      return updateExitdResults;
+
+    default:
+      return [];
+  }
+};

@@ -34,3 +34,16 @@ export const formatDateDMH = (date) => {
 
   return `${day} ${month} - ${hour}`;
 };
+
+/**
+ * Order uma lista de resultados pela data em ordem descrescente.
+ * @param {Object} options valores para comparação
+ * @param {Object} options.results lista de resultados
+ * @returns {Object}
+ */
+export const sortDates = ({ results }) =>
+  results.sort((currentResult, nextResult) => {
+    const currentDate = new Date(currentResult.date);
+    const nextDate = new Date(nextResult.date);
+    return nextDate - currentDate;
+  });
