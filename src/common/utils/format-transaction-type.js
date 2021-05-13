@@ -6,6 +6,8 @@ import {
 } from '../constants/transaction-type';
 import { sortDates } from './format-date';
 
+const CURRENT_DATE = new Date();
+
 /**
  * Filtra se tem o nome na transação.
  * @param {Object} options valores para comparação
@@ -34,34 +36,39 @@ const filterByName = ({ values, nameSearch }) => {
  * @param {string} options.status status da operação
  * @returns {string}
  */
-export const formatTransactionType = ({ entry, scheduled, source, status }) => {
+export const formatTransactionType = ({ entry, source, status }) => {
   switch (status) {
     case STATUS_TYPE.PENDING:
-      return source === SOURCE_TYPE.PAYMENT
-        ? TRANSACTION_TYPE.PAYMENT_PENDING
-        : TRANSACTION_TYPE.TRANSFER_PENDING;
+      if (entry === ENTRY_TYPE.DEBIT) {
+        return source === SOURCE_TYPE.PAYMENT
+          ? TRANSACTION_TYPE.PAYMENT_PENDING
+          : TRANSACTION_TYPE.TRANSFER_PENDING;
+      }
+
+      return '-';
 
     case STATUS_TYPE.REFUNDED:
-      return source === SOURCE_TYPE.PAYMENT
-        ? TRANSACTION_TYPE.PAYMENT_REFUNDED
-        : TRANSACTION_TYPE.TRANSFER_REFUNDED;
+      if (entry === ENTRY_TYPE.CREDIT) {
+        return source === SOURCE_TYPE.PAYMENT
+          ? TRANSACTION_TYPE.PAYMENT_REFUNDED
+          : TRANSACTION_TYPE.TRANSFER_REFUNDED;
+      }
+
+      return '-';
 
     case STATUS_TYPE.COMPLETED:
-      if (scheduled) {
-        return source === SOURCE_TYPE.PAYMENT
-          ? TRANSACTION_TYPE.PAYMENT_SCHEDULED
-          : TRANSACTION_TYPE.TRANSFER_SCHEDULED;
-      }
-      if (!scheduled && entry === ENTRY_TYPE.CREDIT) {
+      if (entry === ENTRY_TYPE.CREDIT) {
         return source === SOURCE_TYPE.PAYMENT
           ? TRANSACTION_TYPE.PAYMENT_CREDIT
           : TRANSACTION_TYPE.TRANSFER_CREDIT;
       }
-      if (!scheduled && entry === ENTRY_TYPE.DEBIT) {
+
+      if (entry === ENTRY_TYPE.DEBIT) {
         return source === SOURCE_TYPE.PAYMENT
           ? TRANSACTION_TYPE.PAYMENT_DEBIT
           : TRANSACTION_TYPE.TRANSFER_DEBIT;
       }
+
       return '-';
 
     default:
@@ -80,7 +87,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
   switch (type) {
     case 'ALL':
       // eslint-disable-next-line no-case-declarations
-      const updateAlldResults = [];
+      const updatedAllResults = [];
 
       results.forEach((result) => {
         const filteredByName = filterByName({ values: result.items, nameSearch });
@@ -88,7 +95,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
         if (filteredByName.length > 0) {
           const updatedItems = sortDates({ results: filteredByName });
 
-          updateAlldResults.push({
+          updatedAllResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
             items: updatedItems,
@@ -96,31 +103,11 @@ export const filterByType = ({ type, nameSearch, results }) => {
         }
       });
 
-      return updateAlldResults;
+      return updatedAllResults;
 
-    case 'ENTRY':
+    case 'CREDIT':
       // eslint-disable-next-line no-case-declarations
-      const updatedEntryResults = [];
-
-      results.forEach((result) => {
-        const filteredByEntry = result.items.filter((item) => item.entry === ENTRY_TYPE.DEBIT);
-        const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
-
-        if (filteredByName.length > 0) {
-          const updatedItems = sortDates({ results: filteredByName });
-          updatedEntryResults.push({
-            date: result.date,
-            amountTotal: result.amountTotal,
-            items: updatedItems,
-          });
-        }
-      });
-
-      return updatedEntryResults;
-
-    case 'EXIT':
-      // eslint-disable-next-line no-case-declarations
-      const updateExitdResults = [];
+      const updatedCreditResults = [];
 
       results.forEach((result) => {
         const filteredByEntry = result.items.filter((item) => item.entry === ENTRY_TYPE.CREDIT);
@@ -128,8 +115,7 @@ export const filterByType = ({ type, nameSearch, results }) => {
 
         if (filteredByName.length > 0) {
           const updatedItems = sortDates({ results: filteredByName });
-
-          updateExitdResults.push({
+          updatedCreditResults.push({
             date: result.date,
             amountTotal: result.amountTotal,
             items: updatedItems,
@@ -137,7 +123,52 @@ export const filterByType = ({ type, nameSearch, results }) => {
         }
       });
 
-      return updateExitdResults;
+      return updatedCreditResults;
+
+    case 'DEBIT':
+      // eslint-disable-next-line no-case-declarations
+      const updatedDebitResults = [];
+
+      results.forEach((result) => {
+        const filteredByEntry = result.items.filter((item) => item.entry === ENTRY_TYPE.DEBIT);
+        const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
+
+        if (filteredByName.length > 0) {
+          const updatedItems = sortDates({ results: filteredByName });
+
+          updatedDebitResults.push({
+            date: result.date,
+            amountTotal: result.amountTotal,
+            items: updatedItems,
+          });
+        }
+      });
+
+      return updatedDebitResults;
+
+    case 'FUTURE':
+      // eslint-disable-next-line no-case-declarations
+      const updatedFutureResults = [];
+
+      results.forEach((result) => {
+        const resultDate = new Date(result.date);
+        const filteredByEntry = result.items.filter(
+          (item) => item.scheduled && resultDate > CURRENT_DATE
+        );
+        const filteredByName = filterByName({ values: filteredByEntry, nameSearch });
+
+        if (filteredByName.length > 0) {
+          const updatedItems = sortDates({ results: filteredByName });
+
+          updatedFutureResults.push({
+            date: result.date,
+            amountTotal: result.amountTotal,
+            items: updatedItems,
+          });
+        }
+      });
+
+      return updatedFutureResults;
 
     default:
       return [];

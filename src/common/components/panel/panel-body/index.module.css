@@ -43,19 +43,19 @@
     text-decoration: line-through;
 }
 
-.panelCreditText {
+.panelDebitText {
     color: var(--primary-color) !important;
 }
 
-.panelCreditText::before {
+.panelDebitText::before {
     content: '- ';
 }
 
-.panelDebitText {
+.panelCreditText {
    color: var(--blueStone) !important;
 }
 
-.panelDebitText::before {
+.panelCreditText::before {
     content: '+ ';
 }
 

@@ -1,3 +1,5 @@
+const CENTS = 100;
+
 /**
  * Aplica formatação monetária brasileira.
  * @param {Number} value
@@ -17,5 +19,5 @@ export const formatCurrency = (value, ignoreZero = false) => {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2,
-  }).format(value);
+  }).format(value / CENTS);
 };

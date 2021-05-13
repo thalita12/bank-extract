@@ -1,14 +1,12 @@
 export const TRANSACTION_TYPE = {
-  PAYMENT_CREDIT: 'Pagamento realizado',
-  PAYMENT_DEBIT: 'Pagamento recebido',
+  PAYMENT_CREDIT: 'Pagamento recebido',
+  PAYMENT_DEBIT: 'Pagamento realizado',
   PAYMENT_REFUNDED: 'Pagamento estornado',
-  PAYMENT_SCHEDULED: 'Pagamento agendado',
-  PAYMENT_PENDING: 'Pagamento pendente',
-  TRANSFER_CREDIT: 'Transferência realizada',
-  TRANSFER_DEBIT: 'Transferência recebida',
+  PAYMENT_PENDING: 'Pagamento agendado',
+  TRANSFER_CREDIT: 'Transferência recebida',
+  TRANSFER_DEBIT: 'Transferência realizada',
   TRANSFER_REFUNDED: 'Transferência estornada',
-  TRANSFER_SCHEDULED: 'Transferência agendada',
-  TRANSFER_PENDING: 'Transferência pendente',
+  TRANSFER_PENDING: 'Transferência agendada',
 };
 
 export const SOURCE_TYPE = {

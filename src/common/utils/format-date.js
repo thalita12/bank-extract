@@ -5,7 +5,7 @@ import { ptBR } from 'date-fns/locale';
  * Formata uma data para 'dd/MM/yy'
  * Pode receber uma string '2021-06-12' ou uma data em milisegundos
  * @param {string, number} date - Data para realizar a formatação
- * @returns {string} '12 de maio de 2021'
+ * @returns {string} '12 de junho de 2021'
  */
 export const formatDateDMY = (date) => {
   if (!date) return null;
@@ -22,7 +22,7 @@ export const formatDateDMY = (date) => {
  * Formata uma data para 'dd/MM/yy'
  * Pode receber uma string '2021-06-12' ou uma data em milisegundos
  * @param {string, number} date - Data para realizar a formatação
- * @returns {string} '12 mai - 11:48'
+ * @returns {string} '12 jun - 11:48'
  */
 export const formatDateDMH = (date) => {
   if (!date) return null;

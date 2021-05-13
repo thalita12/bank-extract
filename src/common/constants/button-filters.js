@@ -7,12 +7,12 @@ const BUTTON_FILTERS = [
   {
     key: 'entry',
     label: 'Entrada',
-    value: 'ENTRY',
+    value: 'CREDIT',
   },
   {
     key: 'exit',
     label: 'Saída',
-    value: 'EXIT',
+    value: 'DEBIT',
   },
   {
     key: 'future',
